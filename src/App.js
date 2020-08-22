@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import CreditCard from "./newcard/Credit";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class PaymentCardContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      flipped: false,
+    };
+
+    this.flipCard = this.flipCard.bind(this);
+  }
+
+  flipCard() {
+    const flipped = !this.state.flipped;
+    this.setState({ flipped });
+  }
+
+  render() {
+    return (
+      <div>
+        <CreditCard
+          name="NEIL GAIMAN"
+          number="5241 1734 7629 0435"
+          expiry="04/2028"
+        />
+        <br />
+        <button onClick={this.flipCard}>Flip the card</button>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default PaymentCardContainer;
